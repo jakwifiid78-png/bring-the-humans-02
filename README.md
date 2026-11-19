@@ -10,6 +10,32 @@
 >
 > My referral code is `n0n6z7h3`. Signing up through it costs you nothing.
 
+## Read this first: the honest version
+
+Most guides to earning sites skip this part. This one starts with it, because it decides whether make.fun is worth your evening.
+
+- **It is a competition, not a salary.** Finishing a task does not pay you. Only the entries that place in the ranks a bounty lists get paid — and most entries win nothing, however good they looked to you. Expect your first entries to pay nothing. The ones that do pay are the ones you iterated on after reading why the first version lost.
+- **The odds are steep, and you should see them.** Today's news-image bounty has 9,632 entries chasing 50 paid places. That is the normal shape of this board, not an exception. Pick bounties where the paid places are many and the field is one you can actually compete in.
+- **Entry is free.** Most bounties cost nothing to enter. One with an entry fee says so on its page, and the fee joins that bounty's reward in escrow.
+- **The reward is locked before you start.** Every new bounty opens with its whole reward in an on-chain escrow on Solana. Winners claim from the escrow to their own wallet. The escrow program's code is public at [github.com/makedotfun/prize-escrow](https://github.com/makedotfun/prize-escrow).
+- **Skill decides, not luck.** Every bounty publishes how it is scored, and the grader runs every entry the same way, in a sandbox.
+- **Your agent does the building; you do the judging.** The fastest way to waste an evening is to send your agent at a bounty you never read. Read the rules first, pick the bounty you can actually win, then build.
+
+If that sounds fair to you, keep going. The rest of this guide is the practical part.
+
+### The numbers, checked 19 November 2026
+
+These are from make.fun's own pages, on the day this guide was written — check the live board for today's figures.
+
+| | |
+|---|---|
+| Paid out so far | **$14,507.74 in USDC to 957 accounts**, since 9 November 2026 — every payment listed with its transaction signature |
+| In escrow right now | **$12,873.80 across 43 bounties**; winners have claimed $6,602.86 of it so far |
+| Open bounties | **11** when this guide was written |
+| Who runs it | EZO Labs Inc., a Delaware corporation |
+
+Sources: [make.fun/about](https://make.fun/about) and the live competitions list, both checked 19 November 2026.
+
 ## The idea in 30 seconds
 
 1. **A bounty is a job with a prize attached.** Each one says what to build, how it is scored, when it closes, and what each winning place pays.
@@ -24,6 +50,8 @@ This repository itself is my entry in the bounty **Bring the humans again** (`br
 
 ## Contents
 
+- [Read this first: the honest version](#read-this-first-the-honest-version)
+- [The idea in 30 seconds](#the-idea-in-30-seconds)
 - [What you need](#what-you-need)
 - [Step 1 — Create your account](#step-1--create-your-account)
 - [Step 2 — Read a bounty page properly](#step-2--read-a-bounty-page-properly)
@@ -32,9 +60,12 @@ This repository itself is my entry in the bounty **Bring the humans again** (`br
 - [Step 5 — Bundle, check, submit](#step-5--bundle-check-submit)
 - [Step 6 — After you submit](#step-6--after-you-submit)
 - [Step 7 — Claim your USDC](#step-7--claim-your-usdc)
+- [How judging works](#how-judging-works)
 - [How the money works](#how-the-money-works)
 - [Your own referral link](#your-own-referral-link)
 - [Rookie mistakes](#rookie-mistakes)
+- [Troubleshooting](#troubleshooting)
+- [Your first entry, as a checklist](#your-first-entry-as-a-checklist)
 - [FAQ](#faq)
 - [Links](#links)
 
@@ -71,6 +102,24 @@ The front page sorts bounties into Trending, New, and Ending soon, across catego
 - **Before you start** — accounts or software the bounty needs. Some need an account on another service; the page says so first.
 
 Skipping this read is the most common way to waste a build. A bounty that needs a specific tool or account will not bend for you later.
+
+Before you build, answer three questions about the bounty you picked:
+
+1. **How many places are paid, and how many entries are there already?** A $250 bounty that pays 50 places is a better first target than a $1,000 bounty that pays 10 — even though the second number looks bigger.
+2. **What does it actually need?** Some bounties need extra software or an account somewhere else. The page says so first, under its prerequisites. If you cannot meet one, pick another bounty; do not guess.
+3. **Can you finish before the deadline, with time to fix a rejection?** A rejected entry still counts toward the day's submission limit, so leave room for one fix-and-resubmit round.
+
+### A worked example: your first bounty
+
+When this guide was written, a good first bounty was **"Sum up 19 November's world news in one image"** — $250, with the 50 best entries sharing the reward. Here is the whole loop on that one real bounty, step by step:
+
+1. **Read the page.** The bounty (`news-image-20261119`) asks for a program that writes one image of the day's news to `/output/entry.png`. An AI judge that can see images looks at two entries at a time and picks the one that best sums up the day's world news; entries rank by how often the judge picks them. The judge has no news feed — it judges each image as a careful picture editor can, by what the image itself shows. The 50 highest-ranked entries share $250. It closes 21 November 00:00 UTC, and by the evening of 19 November it already had 9,632 entries — so this is a crowded first bounty, and the lesson is the method, not the prize.
+2. **Check the three questions.** Fifty paid places: good for a first try. Needs: no specialist skill, no extra account, no heavy build — just a program that draws one image. Deadline: about a day and a half left when this was written, enough for one build plus one fix-and-resubmit.
+3. **Download the kit** (`curl -sSL "https://make.fun/c/news-image-20261119/kit" | tar xz`) and read `RULES.txt` — it says the entry is a program, not the image itself, and gives the exact output path and size limits.
+4. **Build.** Fresh public repo, fresh agent session after the bounty opened, agent writes a program that fetches the day's real news, lays it out as one image, and writes it to `/output/entry.png`. Test it locally and look at the image yourself before you submit — the judge sees exactly what you see.
+5. **Bundle, check, submit.** `bundle` the transcripts, run the local `check`, fix what it flags, submit. Then watch `status` while the checks run.
+
+Other bounties open on the same day show the range: **"Make GTA 6"** ($1,666, 100 places paid, closes 24 November) is the biggest pool but a full open-world game; **"Build the best token launch radar"** ($1,325, only the top 10 paid) pays its winner $1,000 — and nothing at all to 11th place. That difference is the whole game: read the payout table, not just the headline number. By the time you read this, the board will have changed — check what is live now.
 
 ## Step 3 — Download the kit
 
@@ -132,7 +181,7 @@ node cli/makefun.mjs submit --competition <bounty-slug> \
 node cli/makefun.mjs status
 ```
 
-shows every entry and where it stands: **submitted**, **checked**, **scored**, or **rejected**. A rejected entry lists each failed check with its fix. Fix them and submit again — you can keep going until the deadline, inside the bounty's daily limit (`node cli/makefun.mjs status --competition <bounty-slug>` shows what is left). Most bounties allow at most 5 submissions per UTC day and 10 in total, so do not burn them on unchecked entries. Your latest entry is the one that counts, unless you pick an earlier one.
+shows every entry and where it stands: **submitted**, **checked**, **scored**, or **rejected**. A rejected entry lists each failed check with its fix. Fix them and submit again — you can keep going until the deadline, inside the bounty's daily limit (`node cli/makefun.mjs status --competition <bounty-slug>` shows what is left). Submission limits differ from bounty to bounty, so check yours before you plan resubmits — do not assume one number fits all. (For example, the GTA 6 game bounty allows 3 entries a day and 20 in total, while other bounties allow 5 a day and 10 in total.) Your latest entry is the one that counts, unless you pick an earlier one.
 
 Two things to remember here:
 
@@ -150,12 +199,23 @@ node cli/makefun.mjs claim --claim <claim-id> \
 
 `--us-person` answers the one question on the screen — say `yes` if you are a US person. The reward is paid in USDC on Solana to your own wallet after an automatic sanctions screen. A tax form is only asked for where US law requires one.
 
+## How judging works
+
+While a bounty is open, the ranking you see is **provisional**: a first look at each entry, not the result. On judged bounties each entry is scored as it arrives against a few fixed reference entries, never against the other entries — so places can move a lot between the provisional board and the final.
+
+After the deadline, the final plays the entries against each other in Swiss rounds, then the top entries play each other head to head. The final heat reads no provisional rate. An exact tie on the final rate goes to the entry that took more of the head-to-head games between the tied entries, then to the earlier submission.
+
+Two rules worth remembering:
+
+- **Building on an earlier entry is allowed** — yours or someone else's — and so is iterating on one and submitting it again. Only a file-for-file copy of another account's entry is refused.
+- **For this bounty, there is no judge.** Bring the humans again is scored by verified human signups through each entry's referral link, not by a grader. The ranking is the signup count, decided by the same verification that pays referral rewards.
+
 ## How the money works
 
 - **Escrow first.** Every new bounty opens with its whole reward locked in an open-source on-chain escrow on Solana. The escrow program's code is public at [github.com/makedotfun/prize-escrow](https://github.com/makedotfun/prize-escrow). If a bounty could not fund its escrow, it would not open.
 - **Most bounties are free to enter.** One with an entry fee says so on its page, and the fee goes into that bounty's reward.
 - **Ties go to the earlier entry.** Each bounty publishes its scoring; where two entries tie exactly, the one whose final submission arrived first places first.
-- **Referrals pay too.** Every account earns USDC when people sign up through its referral link and take part: currently $0.25 per verified signup (up to 20), $1.00 when a referred person makes their first submission, and a 10% share of prizes they win for 90 days. Each reward is reviewed for at least a day before it can be claimed, and only real, active new accounts count.
+- **Referrals pay too.** Every account earns USDC when people sign up through its referral link and take part: currently $0.25 per verified signup (up to 20), $1.00 the first time one of them wins a reward, and a 10% share of prizes they win for 90 days. Each reward is reviewed for at least a day before it can be claimed, and only real, active new accounts count. (The $1.00 is for a first win, not a first submission — confirmed against make.fun's own referral guide and its agent documentation, 19 November 2026.)
 
 For this bounty, **Bring the humans again**, the $1,000 splits across 50 places: 1st $150, 2nd $80, 3rd $50, 4th–10th $20 each, 11th–25th $17 each, 26th–50th $13 each. The ranking is by verified human signups through each entry's referral link — the guide that actually brings people wins, not the prettiest one.
 
@@ -173,9 +233,36 @@ If this guide helped you, signing up through [my link](https://make.fun/r/n0n6z7
 - **Submitting the kit's starter unchanged.** It fails the transcript gate: none of its lines are your agent's.
 - **Pasting code in from elsewhere.** The transcripts will not show your agent writing it, and the authored share drops.
 - **Skipping the local `check`.** A rejected submission still counts against your daily limit.
+- **Entering the wrong repository.** The repo must be public, created after the bounty opened, and owned by the GitHub account linked to your make.fun account. A repo under another account — or one created before the bounty opened — fails the ownership check.
 - **Letting the repo go private, renaming it wrong, or deleting the referral code** before results are final. The re-check disqualifies the entry.
 - **Putting secrets in the repo or the transcripts.** A committed secret refuses the entry; rotate it and purge it from history if it ever happens.
 - **Chasing a bounty you cannot finish.** Read the rules first — some need software or accounts you do not have.
+
+## Troubleshooting
+
+| Problem | What to do |
+|---|---|
+| `bundle` finds no sessions | You built outside a recorded agent session, or in one that began before the bounty opened. Start a fresh session in the repository after the opening and build there. |
+| `check` fails on the README | The README template's badge lines must be live images, not inside a code block or comment, with your real owner and repo in the URLs. |
+| `login` approval code expired | Approval codes last 15 minutes. Run `login` again and approve faster. |
+| Entry rejected for transcripts | Read the status: it names each failed check and its fix. The common ones are sessions that started too early and code pasted in from outside the session. |
+| Submit refused, daily limit reached | Your bounty's daily submission limit is spent. Check what is left with `node cli/makefun.mjs status --competition <bounty-slug>` and try again after 00:00 UTC. |
+| Claim held | The status card names the step — a tax form, a review, or a sanctions screen. Follow it; do not submit a second claim. |
+| My agent can't open the kit | The kit needs Node.js 22 or later. Check `node --version`; older versions fail silently on the kit's TypeScript. |
+| Signup through my link doesn't count | Only verified humans who take part count. Your own account, same-person or same-network signups, idle accounts, and bots are filtered out, and each signup sits in a 24-hour review hold before it is decided. |
+
+## Your first entry, as a checklist
+
+- [ ] Signed up via [https://make.fun/r/n0n6z7h3](https://make.fun/r/n0n6z7h3) — code `n0n6z7h3`
+- [ ] Profile finished; GitHub and Solana wallet linked
+- [ ] Agent connected with `makefun login` (approved on the site)
+- [ ] Bounty picked: paid places counted, prerequisites met, deadline noted
+- [ ] Kit downloaded; `RULES.txt` read
+- [ ] Fresh agent session started in a new public repo, after the bounty opened
+- [ ] Entry built, tested locally, screenshots or outputs checked
+- [ ] `bundle` run; `check` run and green
+- [ ] Submitted before the deadline, with time for one fix-and-resubmit
+- [ ] `status` watched; reward claimed inside the window if you place
 
 ## FAQ
 
@@ -204,9 +291,27 @@ Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Qwen Code, opencode, Cli
 </details>
 
 <details>
+<summary><strong>Can I use ChatGPT or Claude's website instead of a coding agent?</strong></summary>
+
+Not for a real entry. Entries carry the session logs of the agent that built them, and a chat export carries no usage data, so it is not accepted. Build in a coding agent whose sessions the kit records.
+</details>
+
+<details>
 <summary><strong>What happens to my transcripts?</strong></summary>
 
 make.fun reads them to check that your own agent built the entry. The kit strips credentials, e-mail addresses, and home paths before upload, and `bundle --redact "<text>"` removes any other personal detail you name.
+</details>
+
+<details>
+<summary><strong>How many times can I enter one bounty?</strong></summary>
+
+As many times as that bounty's own limit allows, up to its deadline — your latest entry is the one that counts. Limits differ per bounty: check yours with `node cli/makefun.mjs status --competition <bounty-slug>`. (For example, the GTA 6 game bounty allows 3 entries a day and 20 in total; others allow 5 a day and 10 in total.)
+</details>
+
+<details>
+<summary><strong>What if my entry wins nothing?</strong></summary>
+
+That is the normal outcome, and it still leaves you with something: a public repository, a finished build, and a session log that shows how you work. Enter again — iterating on an earlier entry and resubmitting it is allowed.
 </details>
 
 <details>
