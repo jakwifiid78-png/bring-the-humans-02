@@ -2,6 +2,8 @@
 
 Not part of the entry. Three posts in the same voice: lowercase, reflective,
 honest, each ending with a question. Post one, keep the other two for later.
+Numbers in the main post were checked 19 November 2026 — re-check them on
+make.fun/about before posting if a few days have passed.
 
 Posting is manual — the user posts these by hand from their own X account.
 Nothing here is posted automatically.
